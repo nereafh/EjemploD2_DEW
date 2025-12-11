@@ -229,3 +229,17 @@ document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
   updateCartCounter();
 });
+
+
+
+/*
+para descargar cambios: 
+git branch
+git pull origin main
+
+
+
+para subir cambios cuando es la primera vez
+git branch
+git push -u origin main
+*/
