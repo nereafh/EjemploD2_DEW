@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
 mysql -u zonzamas -p
 Csas1234!
 
-CREATE DATABASE IF NOT EXISTS tienda;
-USE tienda;
+CREATE DATABASE IF NOT EXISTS prueba;
+USE prueba;
 
 --Crear tablas ahí
 --Utilizar lanzarote2026 como servidor, dar mi ip al profesor para que pueda verlo
