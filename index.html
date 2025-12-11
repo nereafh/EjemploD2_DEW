@@ -8,8 +8,10 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Estilos personalizados -->
   <link rel="stylesheet" href="styles.css">
 
+  <!-- Scripts -->
   <script defer src="js/lang.js"></script>
   <script defer src="js/script.js"></script>
 </head>
@@ -17,96 +19,93 @@
 <body>
 
 <header class="p-3 d-flex justify-content-between bg-light border-bottom align-items-center">
-  <!--     <h2 class="m-0">SteelRiders</h2> -->
   <h2 class="m-0" data-translate="inicio">SteelRiders</h2>
-
 
   <nav class="d-flex gap-3 align-items-center">
     <button class="btn btn-outline-secondary" id="navAcerca">Acerca de</button>
     <button class="btn btn-outline-secondary" id="navProductos">Productos</button>
-    <button id="btnCart" class="btn btn-outline-primary position-relative">
+
+    <button id="btnCarrito" class="btn btn-outline-primary position-relative">
       Carrito
-      <span id="cartCounter" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+      <span id="contadorCarrito" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
     </button>
+
     <button id="btnLogin" class="btn btn-outline-secondary">Login</button>
-    <button id="btnRegister" class="btn btn-outline-secondary">Registro</button>
+    <button id="btnRegistro" class="btn btn-outline-secondary">Registro</button>
   </nav>
 </header>
 
 <main class="container my-4">
-
   <div class="row g-3" id="productos"></div>
-
 </main>
 
-<!-- PRODUCTO -->
-<div class="popup d-none" id="popupProduct">
-  <div class="popup-content card p-3">
-    <button class="btn-close float-end" id="closePopupProduct"></button>
-    <h4 id="popupTitle"></h4>
-    <img id="popupImg" class="w-100 mb-2" />
-    <p id="popupDesc"></p>
-    <p class="fw-bold" id="popupPrice"></p>
-    <button class="btn btn-success" id="btnAddToCart">Añadir al carrito</button>
+<!-- VENTANA DETALLE PRODUCTO -->
+<div class="ventana d-none" id="ventanaProducto">
+  <div class="ventana-contenido card p-3">
+    <button class="btn-close float-end" id="closeVentanaProducto"></button>
+    <h4 id="tituloVentanaProducto"></h4>
+    <img id="imagenVentanaProducto" class="w-100 mb-2" />
+    <p id="descripcionVentanaProducto"></p>
+    <p class="fw-bold" id="precioVentanaProducto"></p>
+    <button class="btn btn-success" id="btnAgregarCarrito">Añadir al carrito</button>
   </div>
 </div>
 
-<!-- LOGIN -->
-<div class="popup d-none" id="popupLogin">
-  <div class="popup-content card p-3" style="max-width:400px;">
-    <button class="btn-close float-end" id="closePopupLogin"></button>
+<!-- VENTANA LOGIN -->
+<div class="ventana d-none" id="ventanaLogin">
+  <div class="ventana-contenido card p-3" style="max-width:400px;">
+    <button class="btn-close float-end" id="closeVentanaLogin"></button>
     <h4>Iniciar sesión</h4>
     <form id="formLogin">
       <div class="mb-2">
         <label>Email</label>
-        <input type="email" id="loginEmail" class="form-control" required>
+        <input type="email" id="emailLogin" class="form-control" required>
       </div>
       <div class="mb-2">
         <label>Contraseña</label>
-        <input type="password" id="loginPass" class="form-control" required>
+        <input type="password" id="passwordLogin" class="form-control" required>
       </div>
-      <div id="loginMsg" class="text-danger small mb-2"></div>
+      <div id="mensajeLogin" class="text-danger small mb-2"></div>
       <button class="btn btn-primary">Entrar</button>
     </form>
   </div>
 </div>
 
-<!--  REGISTRO -->
-<div class="popup d-none" id="popupRegister">
-  <div class="popup-content card p-3" style="max-width:450px;">
-    <button class="btn-close float-end" id="closePopupRegister"></button>
+<!-- VENTANA REGISTRO -->
+<div class="ventana d-none" id="ventanaRegistro">
+  <div class="ventana-contenido card p-3" style="max-width:450px;">
+    <button class="btn-close float-end" id="closeVentanaRegistro"></button>
     <h4>Registro</h4>
     <form id="formRegister">
-      <div class="mb-2"><label>Nombre</label><input class="form-control" id="regNombre"></div>
-      <div class="mb-2"><label>DNI</label><input class="form-control" id="regDNI"></div>
-      <div class="mb-2"><label>Email</label><input class="form-control" id="regEmail"></div>
-      <div class="mb-2"><label>Teléfono</label><input class="form-control" id="regTelefono"></div>
-      <div class="mb-2"><label>Contraseña</label><input class="form-control" id="regPass" type="password"></div>
-      <div id="regMsg" class="text-danger small mb-2"></div>
+      <div class="mb-2"><label>Nombre</label><input class="form-control" id="registroNombre"></div>
+      <div class="mb-2"><label>DNI</label><input class="form-control" id="registroDNI"></div>
+      <div class="mb-2"><label>Email</label><input class="form-control" id="registroEmail"></div>
+      <div class="mb-2"><label>Teléfono</label><input class="form-control" id="registroTelefono"></div>
+      <div class="mb-2"><label>Contraseña</label><input class="form-control" id="registroPass" type="password"></div>
+      <div id="mensajeRegistro" class="text-danger small mb-2"></div>
       <button class="btn btn-success">Registrar</button>
     </form>
   </div>
 </div>
 
-<!--  CARRITO -->
-<div class="popup d-none" id="popupCart">
-  <div class="popup-content card p-3" style="max-width:450px;">
-    <button class="btn-close float-end" id="closePopupCart"></button>
+<!-- VENTANA CARRITO -->
+<div class="ventana d-none" id="ventanaCarrito">
+  <div class="ventana-contenido card p-3" style="max-width:450px;">
+    <button class="btn-close float-end" id="closeVentanaCarrito"></button>
     <h4>Carrito</h4>
-    <ul id="cartList" class="list-group mb-3"></ul>
-    <button id="btnClearCart" class="btn btn-danger">Vaciar carrito</button>
+    <ul id="listaCarrito" class="list-group mb-3"></ul>
+    <button id="btnVaciarCarrito" class="btn btn-danger">Vaciar carrito</button>
   </div>
 </div>
 
-<!--  ACERCA DE -->
-<div class="popup d-none" id="popupAcerca">
-  <div class="popup-content card p-3" style="max-width:500px;">
-    <button class="btn-close float-end" id="closePopupAcerca"></button>
+<!-- VENTANA ACERCA DE -->
+<div class="ventana d-none" id="ventanaAcerca">
+  <div class="ventana-contenido card p-3" style="max-width:500px;">
+    <button class="btn-close float-end" id="closeVentanaAcerca"></button>
     <h4>Acerca de SteelRiders</h4>
     <p>SteelRiders es una tienda especializada en motocicletas de alta calidad. 
        Encontrarás modelos deportivos, de carretera y más, con atención personalizada y garantía.</p>
   </div>
-
 </div>
 
 </body>

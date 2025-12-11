@@ -1,5 +1,6 @@
-
-/* estilo body */
+/* 
+   ESTILO GENERAL DEL BODY
+ */
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: linear-gradient(180deg,#f8f9fa 0%, #ffffff 100%);
@@ -7,16 +8,16 @@ body {
   margin: 0;
 }
 
-/* carrusel - contenedor y slides */
-#carrusel { max-width: 1000px; margin: 0 auto; }
-#slides { width: 300%; } /* 3 slides -> 3 * 100% */
-.slide { flex: 0 0 100%; } /* cada slide ocupa 100% */
+/* 
+   ESTILO PRODUCTOS / TARJETAS
+ */
+.product-card { cursor: pointer; }
+.product-card .card-img-top { height: 160px; object-fit: cover; }
 
-/* transición para deslizar */
-.transition-transform { transition: transform 0.5s ease-in-out; display:flex; }
-
-/* común */
-.popup {
+/* 
+   VENTANAS MODALES
+*/
+.ventana {
   position: fixed;
   left: 0; top: 0;
   width: 100%; height: 100%;
@@ -27,37 +28,34 @@ body {
   z-index: 1200;
 }
 
-/* card dentro del popup */
-.popup-content {
+.ventana-contenido {
   max-width: 92%;
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
-.popup-content img {
+.ventana-contenido img {
   max-width: 100%;
-  max-height: 400px; /* ajusta la altura máxima */
-  object-fit: contain; /* mantiene proporción */
+  max-height: 400px;
+  object-fit: contain;
   display: block;
-  margin: 0 auto 1rem; /* centrada y con margen abajo */
+  margin: 0 auto 1rem;
 }
 
-
-/* product cards */
-.product-card { cursor: pointer; }
-.product-card .card-img-top { height: 160px; object-fit: cover; }
-
-/* estilos de visibilidad para mensajes */
+/* 
+   ESTILOS DE VISIBILIDAD
+ */
 .d-none { display: none !important; }
 
-/* company card */
-#companyInfo { max-width: 900px; }
-
-/* inputs errores / validos */
+/* 
+   ESTILO INPUTS PARA VALIDACIÓN
+ */
 input.correcto { border: 2px solid green !important; }
 input.incorrecto { border: 2px solid red !important; }
 
-/* pequeño ajuste responsive */
+/* 
+   AJUSTES RESPONSIVE
+ */
 @media (max-width: 768px) {
-  .popup-content { width: 95%; }
+  .ventana-contenido { width: 95%; }
   .product-card .card-img-top { height: 130px; }
 }
