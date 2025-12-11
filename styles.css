@@ -33,6 +33,15 @@ body {
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
 }
 
+.popup-content img {
+  max-width: 100%;
+  max-height: 400px; /* ajusta la altura máxima */
+  object-fit: contain; /* mantiene proporción */
+  display: block;
+  margin: 0 auto 1rem; /* centrada y con margen abajo */
+}
+
+
 /* product cards */
 .product-card { cursor: pointer; }
 .product-card .card-img-top { height: 160px; object-fit: cover; }
