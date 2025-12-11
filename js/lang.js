@@ -1,35 +1,44 @@
 // lang.js - traducción simple basada en data-translate.
-// Comentarios abundantes para el examen.
 
-// Definimos el objeto de traducciones.
+// objeto de traducciones.
 const translations = {
   es: {
     inicio: "Inicio",
     productos: "Productos",
     acercaDe: "Acerca de",
     derechos: "© 2025 Tienda de Motos. Todos los derechos reservados.",
-    anadirAlCarrito: "Añadir al carrito"
+    carrito: "Carrito",
+    login:"Login", 
+    registro:"Registro"
+
+    
   },
   en: {
     inicio: "Home",
     productos: "Products",
     acercaDe: "About",
     derechos: "© 2025 Motorcycle Shop. All rights reserved.",
-    anadirAlCarrito: "Add to cart"
+    carrito: "Cart",
+    login:"Login", 
+    registro:"Register"
   },
   fr: {
     inicio: "Accueil",
     productos: "Produits",
     acercaDe: "À propos",
     derechos: "© 2025 Boutique Moto. Tous droits réservés.",
-    anadirAlCarrito: "Ajouter au panier"
+    carrito: "Panier",
+    login:"Connexion", 
+    registro:"Inscription"
   },
   de: {
     inicio: "Startseite",
     productos: "Produkte",
     acercaDe: "Über uns",
     derechos: "© 2025 Motorradladen. Alle Rechte vorbehalten.",
-    anadirAlCarrito: "In den Warenkorb"
+    carrito: "Warenkorb",
+    login:"Login", 
+    registro:"Registrieren"
   }
 };
 
@@ -48,11 +57,11 @@ function applyTranslations(lang) {
   }
 }
 
-// Al cargar el DOM (defer ya hace que se cargue después pero guardamos seguridad)
+// Al cargar el DOM (defer ya hace que se cargue después pero guardo seguridad)
 document.addEventListener("DOMContentLoaded", function() {
   const sel = document.querySelector("#idioma-select");
   if (!sel) return;
-  // aplicar idioma inicial
+  // idioma inicial
   applyTranslations(sel.value || "es");
   // evento cambio
   sel.addEventListener("change", function() {

@@ -1,8 +1,8 @@
 <?php
-// db.php - Conexión PDO reutilizable usando tu BD real.
+
 
 $DB_HOST = "127.0.0.1";
-$DB_NAME = "prueba";   // <<< TU BASE DE DATOS REAL
+$DB_NAME = "prueba";   
 $DB_USER = "zonzamas";
 $DB_PASS = "Csas1234!";
 

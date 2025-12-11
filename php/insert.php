@@ -1,6 +1,5 @@
 <?php
-// insert.php - ejemplo POST form-data para insertar (compat con proyecto nerea)
-// Requiere db.php
+// insert.php - ejemplo POST form-data para insertar, requiere db.php
 header("Content-Type: text/plain; charset=UTF-8");
 require_once('db.php');
 

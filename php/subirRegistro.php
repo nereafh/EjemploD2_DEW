@@ -33,7 +33,7 @@ $correo = $data["correo"];
 $telefono = $data["telefono"];
 $password = password_hash($data["password"], PASSWORD_BCRYPT);
 
-// comprobar si existe correo o dni
+// compruebo si existe correo o dni
 $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE correo_electronico = :correo OR dni = :dni LIMIT 1");
 $stmt->execute([":correo"=>$correo, ":dni"=>$dni]);
 if ($stmt->fetch()) {

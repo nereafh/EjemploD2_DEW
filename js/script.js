@@ -1,9 +1,7 @@
 
 //localStorage.clear();
 
-// -------------------------------
-// NAVBAR FUNCIONALIDAD ACERCA / PRODUCTOS
-// -------------------------------
+//  FUNCIONALIDAD ACERCA / PRODUCTOS
 const $i = sel => document.querySelector(sel);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     productos.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Abrir popup Acerca de
+  // Abrir Acerca de
   $i("#navAcerca").onclick = () => {
     $i("#popupAcerca").classList.remove("d-none");
   };
@@ -21,20 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-/* script.js
-   Lógica principal del proyecto (sin jQuery).
-   - Manejo carrusel
-   - Renderizado productos
-   - Popups (producto, login, registro)
-   - Carrito simple (localStorage)
-   - Login/register con fetch a endpoints PHP
-   - Validación simple con regex (ejemplos)
-   Comentarios abundantes para el examen.
-*/
 
-// -------------------------------
 // CONFIGURACIÓN
-// -------------------------------
 const BASE_API = "php/";
 
 const PRODUCTS = [
@@ -45,15 +31,11 @@ const PRODUCTS = [
 ];
 
 
-// -------------------------------
 // HELPERS
-// -------------------------------
 const $ = sel => document.querySelector(sel);
 
 
-// -------------------------------
 // RENDER PRODUCTOS
-// -------------------------------
 function renderProducts() {
   const cont = $("#productos");
   cont.innerHTML = "";
@@ -80,9 +62,7 @@ function renderProducts() {
 }
 
 
-// -------------------------------
-// POPUP PRODUCTO
-// -------------------------------
+// PRODUCTO
 function openProduct(id) {
   const p = PRODUCTS.find(x => x.id === id);
   $("#popupImg").src = p.img;
@@ -102,9 +82,7 @@ $("#btnAddToCart").onclick = function () {
 };
 
 
-// -------------------------------
 // CARRITO
-// -------------------------------
 function getCart() {
   return JSON.parse(localStorage.getItem("cart")) || [];
 }
@@ -166,9 +144,7 @@ $("#btnClearCart").onclick = () => { localStorage.removeItem("cart"); renderCart
 $("#btnCart").onclick = openCart;
 
 
-// -------------------------------
 // LOGIN
-// -------------------------------
 $("#formLogin").onsubmit = async e => {
   e.preventDefault();
 
@@ -190,9 +166,7 @@ $("#btnLogin").onclick = () => $("#popupLogin").classList.remove("d-none");
 $("#closePopupLogin").onclick = () => $("#popupLogin").classList.add("d-none");
 
 
-// -------------------------------
 // REGISTRO
-// -------------------------------
 $("#formRegister").onsubmit = async e => {
   e.preventDefault();
 
@@ -222,9 +196,7 @@ $("#btnRegister").onclick = () => $("#popupRegister").classList.remove("d-none")
 $("#closePopupRegister").onclick = () => $("#popupRegister").classList.add("d-none");
 
 
-// -------------------------------
 // INIT
-// -------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   renderProducts();
   updateCartCounter();

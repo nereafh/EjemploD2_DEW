@@ -1,7 +1,7 @@
 <?php
 // procesarLogin.php
 // Recibe form-data (POST) con correo_electronico y contrasena
-// Responde texto (por simplicidad) - puedes adaptar a JSON
+// Responde texto 
 
 session_start();
 require_once('db.php');
