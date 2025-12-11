@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.error-msg {
+    color: red;
+    font-size: 0.85em;
+    display: none;
+}
+
+input.valido {
+    border-color: green !important;
+}
+
+input.invalido {
+    border-color: red !important;
+}
+
+#resultado {
+    background-color: #fff;
+    min-height: 50px;
+    word-wrap: break-word;
+    padding: 10px;
+}
