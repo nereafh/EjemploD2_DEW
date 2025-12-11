@@ -1,9 +1,14 @@
+-- create_table_usuarios.sql
 CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100),
-    correo_electronico VARCHAR(100) UNIQUE,
-    contrasena VARCHAR(255)
-);
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  apellidos VARCHAR(150),
+  dni VARCHAR(20) NOT NULL UNIQUE,
+  correo_electronico VARCHAR(150) NOT NULL UNIQUE,
+  telefono VARCHAR(30),
+  contrasena VARCHAR(255) NOT NULL,
+  fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 /*

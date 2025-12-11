@@ -1,137 +1,184 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Motos</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <script defer src="script.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tienda DEW - Proyecto adaptado</title>
+
+  <!-- Bootstrap CSS (solo CSS, como pediste) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Hoja de estilos propia -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Cargar los scripts al final, pero lang.js puede inicializar el selector -->
+  <script defer src="js/lang.js"></script>
+  <script defer src="js/script.js"></script>
 </head>
 <body>
-<div class="page-container">
 
-<!-- HEADER -->
-<header class="header">
-    <div class="logo">
-        <img src="images/SteelRiders.png" alt="logo">
+  <!-- Header con logo, navegación y selector idioma -->
+  <header class="d-flex justify-content-between align-items-center p-3 border-bottom bg-light">
+    <div class="d-flex align-items-center gap-3">
+      <img src="img/logo.png" alt="logo" id="logo" style="height:60px;">
+      <h1 class="h5 mb-0">SteelRiders (DEW)</h1>
     </div>
-    <nav class="nav">
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="productosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
-                <ul class="dropdown-menu" aria-labelledby="productosDropdown">
-                    <li><a class="dropdown-item" href="#" onclick="showPopup('Honda CB650R','images/Honda1.webp','Moto deportiva con gran potencia')">Honda CB650R</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="showPopup('Kawasaki Ninja','images/Kawasaki.webp','Alta velocidad y rendimiento')">Kawasaki Ninja</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="showPopup('Yamaha R1','images/Yamaha.webp','Diseño aerodinámico y potente')">Yamaha R1</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="showPopup('KTM Duke 990','images/KTM.webp','Comodidad y diseño agresivo')">KTM Duke 990</a></li>
-                    <li><a class="dropdown-item" href="#" onclick="showPopup('Suzuki GSX 1000R','images/Suzuki1.webp','Extremadamente rápida')">Suzuki GSX 1000R</a></li>
-                </ul>
-            </li>
-            <li class="nav-item"><a href="#" class="nav-link" onclick="toggleCompanyInfo()">Acerca de</a></li>
-        </ul>
+
+    <nav>
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link" href="#" data-translate="inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="btnProductos" data-translate="productos">Productos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="btnAcerca" data-translate="acercaDe">Acerca</a></li>
+      </ul>
     </nav>
-    <div class="nav-icons">
-        <a href="#" class="nav-link">
-            <i class="bi bi-cart3 fs-4"></i>
-            <span id="cart-counter" class="badge rounded-pill bg-danger d-none">0</span>
-        </a>
-        <a href="#" class="nav-link dropdown-toggle" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-circle fs-4"></i>
-        </a>
-        <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-            <li><a class="dropdown-item" href="#" onclick="showPopupLogin()">Login</a></li>
-            <li><a class="dropdown-item" href="#" onclick="showPopupRegister()">Registro</a></li>
-        </ul>
-    </div>
-</header>
 
-<!-- MAIN -->
-<main class="main-content">
-    <div class="carrusel">
-        <div class="carrusel-container">
-            <div class="carrusel-slide" onclick="showPopup('Honda CB650R','images/Honda1.webp','Moto deportiva con gran potencia')">
-                <img src="images/Honda1.webp" alt="Honda CB650R">
-            </div>
-            <div class="carrusel-slide" onclick="showPopup('Kawasaki Ninja','images/Kawasaki.webp','Alta velocidad y rendimiento')">
-                <img src="images/Kawasaki.webp" alt="Kawasaki Ninja">
-            </div>
-            <div class="carrusel-slide" onclick="showPopup('Yamaha R1','images/Yamaha.webp','Diseño aerodinámico y potente')">
-                <img src="images/Yamaha.webp" alt="Yamaha R1">
-            </div>
+    <div class="d-flex align-items-center gap-2">
+      <!-- Carrito: contador dinámico -->
+      <button id="btnCart" class="btn btn-outline-primary position-relative">
+        <i class="bi-cart-fill"></i> <span id="cartCounter" class="badge bg-danger position-absolute top-0 start-100 translate-middle">0</span>
+        <span class="visually-hidden">Carrito</span>
+      </button>
+
+      <!-- Perfil: login / registro -->
+      <div class="btn-group">
+        <button id="btnLogin" class="btn btn-outline-secondary">Login</button>
+        <button id="btnRegister" class="btn btn-outline-secondary">Registro</button>
+      </div>
+
+      <!-- Selector idioma -->
+      <select id="idioma-select" class="form-select form-select-sm" style="width:120px;">
+        <option value="es">ES</option>
+        <option value="en">EN</option>
+        <option value="fr">FR</option>
+        <option value="de">DE</option>
+      </select>
+    </div>
+  </header>
+
+  <!-- Main: carrusel + productos -->
+  <main class="container my-4">
+
+    <!-- Carrusel simple: imágenes que abren popup -->
+    <section id="carrusel" class="mb-4">
+      <div class="overflow-hidden position-relative" style="border-radius:10px;">
+        <div id="slides" class="d-flex transition-transform">
+          <!-- Cada slide ocupa 100% ancho del contenedor -->
+          <div class="slide"><img src="img/slide1.jpg" alt="s1" class="w-100 d-block"></div>
+          <div class="slide"><img src="img/slide2.jpg" alt="s2" class="w-100 d-block"></div>
+          <div class="slide"><img src="img/slide3.jpg" alt="s3" class="w-100 d-block"></div>
         </div>
-        <button class="carrusel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="carrusel-btn next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
-</main>
+        <button id="prevSlide" class="btn btn-sm btn-dark position-absolute top-50 start-0 translate-middle-y ms-2">&#10094;</button>
+        <button id="nextSlide" class="btn btn-sm btn-dark position-absolute top-50 end-0 translate-middle-y me-2">&#10095;</button>
+      </div>
+    </section>
 
-<!-- POPUP PRODUCTO -->
-<div id="popup" class="popup">
-    <div class="popup-content">
-        <span class="close-btn" onclick="closePopup('general')">&times;</span>
-        <div class="popup-inner">
-            <img id="popup-img" src="" alt="Moto">
-            <div class="popup-info">
-                <h3 id="popup-title"></h3>
-                <p id="popup-desc"></p>
-                <button onclick="addToCart()" class="btn btn-success">Añadir al carrito</button>
-            </div>
+    <!-- Productos (se generan con JS) -->
+    <section id="productos" class="row g-3" aria-live="polite">
+      <!-- Las tarjetas se inyectan desde js -->
+    </section>
+
+    <!-- Botones de "mostrar tabla empresa" -->
+    <section class="mt-4">
+      <button id="btnToggleCompany" class="btn btn-outline-info">Acerca de</button>
+      <div id="companyInfo" class="card mt-3 p-3 d-none">
+        <h5>SteelRiders</h5>
+        <p>Calle Ejemplo 1, Arrecife. Tel: +34 928 000000</p>
+        <p>Somos una tienda especializada en motocicletas.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Popups: product popup, login, register -->
+  <!-- Product popup -->
+  <div id="popupProduct" class="popup d-none" role="dialog" aria-modal="true">
+    <div class="popup-content card p-3">
+      <button class="btn-close float-end" id="closePopupProduct" aria-label="Cerrar"></button>
+      <div class="d-flex gap-3 align-items-start">
+        <img id="popupImg" src="img/placeholder.png" alt="" style="max-width:240px; width:100%; height:auto;">
+        <div>
+          <h4 id="popupTitle"></h4>
+          <p id="popupDesc"></p>
+          <p class="fw-bold" id="popupPrice"></p>
+          <button id="btnAddToCart" class="btn btn-success">Añadir al carrito</button>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<!-- POPUP LOGIN -->
-<div id="popup-login" class="popup">
-    <div class="popup-content">
-        <span class="close-btn" onclick="closePopup('login')">&times;</span>
-        <h3>Iniciar sesión</h3>
-        <form id="login-form">
-            <input type="email" name="correo_electronico" placeholder="Correo electrónico" required><br>
-            <input type="password" name="contrasena" placeholder="Contraseña" required><br>
-            <button type="submit">Iniciar sesión</button>
-        </form>
+  <!-- Login popup -->
+  <div id="popupLogin" class="popup d-none">
+    <div class="popup-content card p-3" style="max-width:420px;">
+      <button class="btn-close float-end" id="closePopupLogin" aria-label="Cerrar"></button>
+      <h5>Iniciar sesión</h5>
+      <form id="formLogin" class="mt-2">
+        <div class="mb-2">
+          <label>Email</label>
+          <input type="email" id="loginEmail" class="form-control" required>
+          <p id="errorLoginEmail" class="text-danger small d-none"></p>
+        </div>
+        <div class="mb-2">
+          <label>Contraseña</label>
+          <input type="password" id="loginPass" class="form-control" required>
+          <p id="errorLoginPass" class="text-danger small d-none"></p>
+        </div>
+        <div id="loginMsg" class="small text-danger mb-2"></div>
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-primary">Entrar</button>
+          <button type="button" id="loginCancel" class="btn btn-secondary">Cancelar</button>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 
-<!-- POPUP REGISTRO -->
-<div id="popup-register" class="popup">
-    <div class="popup-content">
-        <span class="close-btn" onclick="closePopup('register')">&times;</span>
-        <h3>Registro</h3>
-        <form id="register-form">
-            <input type="text" name="nombre" placeholder="Nombre" required><br>
-            <input type="email" name="correo_electronico" placeholder="Correo electrónico" required><br>
-            <input type="password" name="contrasena" placeholder="Contraseña" required><br>
-            <button type="submit">Registrar</button>
-        </form>
+  <!-- Register popup -->
+  <div id="popupRegister" class="popup d-none">
+    <div class="popup-content card p-3" style="max-width:480px;">
+      <button class="btn-close float-end" id="closePopupRegister" aria-label="Cerrar"></button>
+      <h5>Registro</h5>
+      <form id="formRegister" class="mt-2">
+        <div class="mb-2">
+          <label>Nombre</label>
+          <input type="text" id="regNombre" class="form-control" name="nombre" required>
+          <p id="errNombre" class="text-danger small d-none"></p>
+        </div>
+        <div class="mb-2">
+          <label>DNI</label>
+          <input type="text" id="regDNI" class="form-control" name="dni" required>
+          <p id="errDNI" class="text-danger small d-none"></p>
+        </div>
+        <div class="mb-2">
+          <label>Email</label>
+          <input type="email" id="regEmail" class="form-control" name="correo_electronico" required>
+          <p id="errEmail" class="text-danger small d-none"></p>
+        </div>
+        <div class="mb-2">
+          <label>Teléfono</label>
+          <input type="text" id="regTelefono" class="form-control" name="telefono" required>
+          <p id="errTelefono" class="text-danger small d-none"></p>
+        </div>
+        <div class="mb-2">
+          <label>Contraseña</label>
+          <input type="password" id="regPass" class="form-control" name="contrasena" required>
+          <p id="errPass" class="text-danger small d-none"></p>
+        </div>
+
+        <div id="regMsg" class="small text-danger mb-2"></div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" class="btn btn-success">Registrar</button>
+          <button type="button" id="regCancel" class="btn btn-secondary">Cancelar</button>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
 
-<!-- INFO EMPRESA -->
-<div id="company-info-table" class="container mt-5" style="display:none;">
-    <table class="table table-dark">
-        <thead>
-            <tr><th colspan="2" class="text-center">Información de la Empresa</th></tr>
-        </thead>
-        <tbody>
-            <tr><th>Nombre</th><td>SteelRiders</td></tr>
-            <tr><th>Dirección</th><td>Calle Leon y Castillo, 156, Arrecife, España</td></tr>
-            <tr><th>Teléfono</th><td>+123 456 7890</td></tr>
-            <tr><th>Correo</th><td>contacto@steelriders.com</td></tr>
-            <tr><th>Descripción</th><td>Especializados en motocicletas de alto rendimiento.</td></tr>
-        </tbody>
-    </table>
-</div>
+  <!-- Footer -->
+  <footer class="text-center py-3 border-top mt-4">
+    <small class="footer-text" data-translate="derechos">© 2025 Tienda de Motos. Todos los derechos reservados.</small>
+  </footer>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <p>&copy; 2024 Tienda de Motos. Todos los derechos reservados.</p>
-</footer>
+  <!-- Bootstrap icons (loader for icons only) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</div>
 </body>
 </html>
